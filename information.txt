@@ -1,0 +1,22 @@
+1. Introducción a NestJS | Clase 0 | NestJS de 0 a 100
+https://www.youtube.com/watch?v=X-59-aXgFH4
+
+
+
+----------------------------------------------
+
+2. Configuración y variables de entorno | Clase 1 | NestJS de 0 a 100
+https://www.youtube.com/watch?v=WsqXmi_jJM4
+
+Install package for environment variables: 
+npm i --save @nestjs/config
+
+For logs of end point: 
+npm install morgan
+npm i --save-dev @types/morgan
+
+------------------------------------------------
+3. Docker compose y PostgresDB | Clase 2 | NestJS de 0 a 100
+
+Create the docker composer.
+docker compose up -d
