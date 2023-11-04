@@ -18,5 +18,35 @@ npm i --save-dev @types/morgan
 ------------------------------------------------
 3. Docker compose y PostgresDB | Clase 2 | NestJS de 0 a 100
 
-Create the docker composer.
-docker compose up -d
+run: docker-compose up
+
+------------------------------------------------
+4. Iniciando con TypeORM | Clase 3 (P1) | NestJS de 0 a 100
+https://www.youtube.com/watch?v=EknyyE7RAEk
+8:00
+
+Installing typeorm an the postgres client:  npm install --save @nestjs/typeorm typeorm pg
+instalation de strategy: npm install typeorm-naming-strategies
+generate a new module: nest generate module projects
+
+-----------------------------------------------
+Relacion custom Many to Many y Migraciones | Clase 3 (P2) | NestJS de 0 a 100
+https://www.youtube.com/watch?v=QPKN0pZradM
+
+Configurate scripts in packaje.json
+    "orm:init": "typeorm-ts-node-esm -d ./src/config/data.source.ts",
+    "m:gen": "set NODE_ENV=develop && npm run orm:init migration:generate",
+    "m:run": "set NODE_ENV=develop && npm run orm:init migration:run"
+
+    execute typeorm client -> datasource ... npm run m:gen ./migrations/init
+    migration generation ->  npm run m:run
+    run the migration
+
+to exclude the migrations during compilation, in the tsconfig.build.json file
+"migrations/*"
+
+---------------------------------------------
+DTOs, Patron repositorio y Servicios | Clase 4 | NestJS de 0 a 100
+https://www.youtube.com/watch?v=_sVnRC3mIko
+
+
