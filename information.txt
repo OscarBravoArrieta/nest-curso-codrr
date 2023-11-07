@@ -1,3 +1,6 @@
+0. https://www.youtube.com/watch?v=X-59-aXgFH4&list=PLergODdA95kfcSoXqZZ-IDImO6YaQLYlG
+
+
 1. Introducción a NestJS | Clase 0 | NestJS de 0 a 100
 https://www.youtube.com/watch?v=X-59-aXgFH4
 
@@ -48,5 +51,24 @@ to exclude the migrations during compilation, in the tsconfig.build.json file
 ---------------------------------------------
 DTOs, Patron repositorio y Servicios | Clase 4 | NestJS de 0 a 100
 https://www.youtube.com/watch?v=_sVnRC3mIko
+
+Calss validator instalarion: npm i --save class-validator class-transformer
+
+Configurate validation 
+     app.useGlobalPipes(
+         new ValidationPipe({
+             transformOptions: {
+                 enableImplicitConversion: true,
+             }
+
+         })
+     )
+     
+ update the user.module
+
+      imports: [
+         TypeOrmModule.forFeature([UsersEntity])
+     ],
+
 
 
