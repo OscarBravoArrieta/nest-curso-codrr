@@ -14,7 +14,7 @@ import { ROLES } from "../../constants/roles"
      @IsNumber()
      age: number
 
-     @IsNotEmpty()
+     @IsNotEmpty({message: "El email es requerido"})
      @IsString()
      email: string
 

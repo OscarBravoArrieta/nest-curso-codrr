@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=X-59-aXgFH4
 
 
 
-----------------------------------------------
+---------------------------------------------------------------------------------------------------
 
 2. Configuración y variables de entorno | Clase 1 | NestJS de 0 a 100
 https://www.youtube.com/watch?v=WsqXmi_jJM4
@@ -18,12 +18,12 @@ For logs of end point:
 npm install morgan
 npm i --save-dev @types/morgan
 
-------------------------------------------------
+---------------------------------------------------------------------------------------------------
 3. Docker compose y PostgresDB | Clase 2 | NestJS de 0 a 100
 
 run: docker-compose up
-
-------------------------------------------------
+down: docker system prune -a
+---------------------------------------------------------------------------------------------------
 4. Iniciando con TypeORM | Clase 3 (P1) | NestJS de 0 a 100
 https://www.youtube.com/watch?v=EknyyE7RAEk
 8:00
@@ -32,7 +32,7 @@ Installing typeorm an the postgres client:  npm install --save @nestjs/typeorm t
 instalation de strategy: npm install typeorm-naming-strategies
 generate a new module: nest generate module projects
 
------------------------------------------------
+---------------------------------------------------------------------------------------------------
 Relacion custom Many to Many y Migraciones | Clase 3 (P2) | NestJS de 0 a 100
 https://www.youtube.com/watch?v=QPKN0pZradM
 
@@ -41,14 +41,17 @@ Configurate scripts in packaje.json
     "m:gen": "set NODE_ENV=develop && npm run orm:init migration:generate",
     "m:run": "set NODE_ENV=develop && npm run orm:init migration:run"
 
-    execute typeorm client -> datasource ... npm run m:gen ./migrations/init
-    migration generation ->  npm run m:run
-    run the migration
+    1. orm:init: Ejecución del clienmte de typeorm para especificar donde se encuentra el archivo datasource, este es ejecutado dentro de los dos siguientes
+
+
+    2. Generación de las  migraciones, se debe especificar la carpeta en donde se guardaron las migraciones: npm run m:gen ./migrations/init
+
+    3.  Correr las migraciones: npm run m:run
 
 to exclude the migrations during compilation, in the tsconfig.build.json file
 "migrations/*"
 
----------------------------------------------
+---------------------------------------------------------------------------------------------------
 DTOs, Patron repositorio y Servicios | Clase 4 | NestJS de 0 a 100
 https://www.youtube.com/watch?v=_sVnRC3mIko
 
@@ -70,5 +73,8 @@ Configurate validation
          TypeOrmModule.forFeature([UsersEntity])
      ],
 
+---------------------------------------------------------------------------------------------------
+Error Handlers y Controladores | Clase 5 | NestJS de 0 a 100
+https://www.youtube.com/watch?v=7uX7c-9iObM
 
 

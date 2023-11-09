@@ -8,6 +8,8 @@ import { CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from "type
          type: 'timestamp',
          name: 'created_at'
      })
+     createdAt: Date
+
 
      @UpdateDateColumn({
          type: 'timestamp',

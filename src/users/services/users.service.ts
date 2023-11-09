@@ -3,6 +3,7 @@
  import { UsersEntity } from '../entities/users.entity'
  import { DeleteResult, Repository, UpdateResult } from 'typeorm'
  import { UserDTO, UserUpdateDTO} from '../dto/user.dto'
+ import { ErrorManager } from 'src/utils/error.manager'
 
  @Injectable()
  export class UsersService {
@@ -24,12 +25,23 @@
 
      // -------------------------------------------------------------------------------------------
 
-     public async findUsers(body: UserDTO): Promise<UsersEntity[]> {
+     public async findUsers(): Promise<UsersEntity[]> {
+        const users: UsersEntity[]  = await this.userRepository.find()
+        console.log('USERS',users)
 
          try {
-             return await this.userRepository.find()
+             const users: UsersEntity[]  = await this.userRepository.find()
+             console.log('USERS',users)
+             if(users.length === 0 ) {
+                 throw new ErrorManager({
+                     type: 'BAD_REQUEST',
+                     message: 'No se encontró el resultado'
+                 })
+             }
+             
+             return users
          } catch (error) {
-             throw new Error(error)
+             throw ErrorManager.createSignarureError(error.message)
          }
         
      }
@@ -39,12 +51,19 @@
      public async findUserById(id: string): Promise<UsersEntity> {
 
          try {
-             return await this.userRepository
+             const user: UsersEntity = await this.userRepository
                  .createQueryBuilder('user')
                  .where({id})
                  .getOne()
+                 if(!user) {
+                    throw new ErrorManager({
+                        type: 'BAD_REQUEST',
+                        message: 'No se encontró el resultado'
+                    })
+                }
+             return user
          } catch (error) {
-             throw new Error(error)
+             throw ErrorManager.createSignarureError(error.message)
          }  
      }
 
@@ -55,12 +74,15 @@
          try {
              const user: UpdateResult = await this.userRepository.update(id, body)
              if(user.affected === 0) {
-                 return undefined
+                 throw new ErrorManager({
+                     type: 'BAD_REQUEST',
+                     message: 'No se pudo actualizar'
+                 })
              }
              return user
 
          } catch (error) {
-             throw new Error(error)
+             throw ErrorManager.createSignarureError(error.message)
          }  
      }
 
@@ -71,12 +93,15 @@
          try {
              const user: DeleteResult = await this.userRepository.delete(id)
              if(user.affected === 0) {
-                 return undefined
+                 throw new ErrorManager({
+                     type: 'BAD_REQUEST',
+                     message: 'No se pudo borrar'
+                 })
              }
              return user 
 
          } catch (error) {
-             throw new Error(error)
+            throw ErrorManager.createSignarureError(error.message)
          }  
      }
 
