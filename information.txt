@@ -75,6 +75,12 @@ Configurate validation
 
 ---------------------------------------------------------------------------------------------------
 Error Handlers y Controladores | Clase 5 | NestJS de 0 a 100
+Manejo de errores
 https://www.youtube.com/watch?v=7uX7c-9iObM
 
+
+
+---------------------------------------------------------------------------------------------------
+Relaciones con Query Builder | Clase 6 | NestJS de 0 a 100
+https://www.youtube.com/watch?v=pXYAwYq9gfw
 
