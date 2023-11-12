@@ -3,7 +3,7 @@
  import { UsersEntity } from '../entities/users.entity'
  import { DeleteResult, Repository, UpdateResult } from 'typeorm'
  import { UserDTO, UserUpdateDTO} from '../dto/user.dto'
- import { ErrorManager } from 'src/utils/error.manager'
+ import { ErrorManager } from '../../utils/error.manager'
 
  @Injectable()
  export class UsersService {
@@ -20,14 +20,11 @@
          } catch (error) {
              throw new Error(error)
          }
-         
      }
 
      // -------------------------------------------------------------------------------------------
 
      public async findUsers(): Promise<UsersEntity[]> {
-        const users: UsersEntity[]  = await this.userRepository.find()
-        console.log('USERS',users)
 
          try {
              const users: UsersEntity[]  = await this.userRepository.find()
@@ -38,12 +35,10 @@
                      message: 'No se encontró el resultado'
                  })
              }
-             
              return users
          } catch (error) {
              throw ErrorManager.createSignarureError(error.message)
          }
-        
      }
 
      // -------------------------------------------------------------------------------------------
@@ -80,7 +75,6 @@
                  })
              }
              return user
-
          } catch (error) {
              throw ErrorManager.createSignarureError(error.message)
          }  
@@ -99,7 +93,6 @@
                  })
              }
              return user 
-
          } catch (error) {
             throw ErrorManager.createSignarureError(error.message)
          }  

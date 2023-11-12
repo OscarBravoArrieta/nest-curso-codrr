@@ -1,57 +1,58 @@
  import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
- import { UsersService } from '../services/users.service'
- import { UserDTO, UserUpdateDTO } from '../dto/user.dto'
+ import { ProjectsService } from '../services/projects.service'
+ import { ProjectDto, ProjectUpdateDTO } from '../dto/projects.dto'
 
- @Controller('users')
- export class UsersController {
-     constructor(
-         private readonly userService: UsersService
-     ){}
-
+ @Controller('projects')
+ export class ProjectsController {
+     constructor (
+         private readonly projectService: ProjectsService
+     ) {}
+    
      // -------------------------------------------------------------------------------------------
      @Post('register')
-     public async registerUser(@Body() body: UserDTO) {
-    
-         return await this.userService.createUser(body)
-    
+     public async registerProject(@Body() body: ProjectDto) {
+         
+         return await this.projectService.createProject(body)
+         
      }
 
      // -------------------------------------------------------------------------------------------
-    
+
      @Get('all')
      
-     public async findAllUsers() {
+     public async sindUserById(@Param('id') id: string) {
 
-         return await this.userService.findUsers()
+         return await this.projectService.findProjects()
      }
 
      // -------------------------------------------------------------------------------------------
-     
+
      @Get(':id')
 
      public async findUserById(@Param('id') id: string) {
          
-        return await this.userService.findUserById(id)
+         return await this.projectService.findProjectById(id)
          
      }
+
      // -------------------------------------------------------------------------------------------
-     
      @Put('edit/:id')
+     
+     public async updateUser(@Param('id') id: string, @Body() body: ProjectUpdateDTO) {
 
-     public async updateUser(@Param('id') id: string, @Body() body: UserUpdateDTO) {
+         return await this.projectService.updateProject(body, id)
+
+     }
+
+     // -------------------------------------------------------------------------------------------
+
+     @Delete('delete/:id')
+     
+     public async deleteteUser(@Param('id') id: string) {
         
-         return await this.userService.updateUser(body, id)
+         return await this.projectService.deleteProject(id)
      }
 
      // -------------------------------------------------------------------------------------------
      
-     @Delete('delete/:id')
-
-     public async deleteteUser(@Param('id') id: string) {
-
-         return await this.userService.deleteUser(id)
-     }
-
-     // -------------------------------------------------------------------------------------------
-
  }

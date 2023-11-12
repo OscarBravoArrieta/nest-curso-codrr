@@ -5,7 +5,7 @@
  import { ConfigModule } from '@nestjs/config'
  import { DataSourceConfig } from './config/data.source'
  import { TypeOrmModule } from '@nestjs/typeorm'
-import { ProjectsModule } from './projects/projects.module';
+ import { ProjectsModule } from './projects/projects.module'
 
 
  @Module({ 

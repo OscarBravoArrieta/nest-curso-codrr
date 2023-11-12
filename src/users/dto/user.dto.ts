@@ -1,5 +1,5 @@
  import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator"
-import { ROLES } from "../../constants/roles"
+ import { ROLES } from "../../constants/roles"
 
  export class UserDTO {
      @IsNotEmpty()
@@ -31,7 +31,8 @@ import { ROLES } from "../../constants/roles"
      role: ROLES
  }
 
-
+ // -----------------------------------------------------------------------------------------------
+ 
  export class UserUpdateDTO {
      @IsOptional()
      @IsString()
