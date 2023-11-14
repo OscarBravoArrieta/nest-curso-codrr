@@ -4,11 +4,13 @@
  import { DeleteResult, Repository, UpdateResult } from 'typeorm'
  import { UserDTO, UserUpdateDTO} from '../dto/user.dto'
  import { ErrorManager } from '../../utils/error.manager'
+ import { UsersProjectsEntity } from '../entities/usersProjects.entity'
 
  @Injectable()
  export class UsersService {
      constructor(
-         @InjectRepository(UsersEntity) private readonly userRepository: Repository<UsersEntity>
+         @InjectRepository(UsersEntity) private readonly userRepository: Repository<UsersEntity>,
+         @InjectRepository(UsersProjectsEntity) private readonly userProjectsRepository: Repository<UsersProjectsEntity>
      ){}
 
      // -------------------------------------------------------------------------------------------
@@ -49,6 +51,8 @@
              const user: UsersEntity = await this.userRepository
                  .createQueryBuilder('user')
                  .where({id})
+                 .leftJoinAndSelect('user.projectsIncludes', 'projectsIncludes')
+                 .leftJoinAndSelect('projectsIncludes.project', 'project')
                  .getOne()
                  if(!user) {
                     throw new ErrorManager({
@@ -78,6 +82,18 @@
          } catch (error) {
              throw ErrorManager.createSignarureError(error.message)
          }  
+     }
+
+     // --------------------------------------------------------------------------------------------
+
+     public async relationToProject(body: any) {
+
+         try {
+             return await this.userProjectsRepository.save(body)
+         } catch (error) {
+            throw ErrorManager.createSignarureError(error.message)
+         }
+
      }
 
      // --------------------------------------------------------------------------------------------

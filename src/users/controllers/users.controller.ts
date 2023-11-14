@@ -1,6 +1,6 @@
  import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
  import { UsersService } from '../services/users.service'
- import { UserDTO, UserUpdateDTO } from '../dto/user.dto'
+ import { UserDTO, UserToProjectDTO, UserUpdateDTO } from '../dto/user.dto'
 
  @Controller('users')
  export class UsersController {
@@ -26,7 +26,15 @@
      }
 
      // -------------------------------------------------------------------------------------------
+
+     @Post('add-to-project')
+     public async addToProject(@Body() body: UserToProjectDTO) {
+    
+         return await this.userService.relationToProject(body)
+    
+     }
      
+     // -------------------------------------------------------------------------------------------
      @Get(':id')
 
      public async findUserById(@Param('id') id: string) {
