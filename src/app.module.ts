@@ -6,6 +6,7 @@
  import { DataSourceConfig } from './config/data.source'
  import { TypeOrmModule } from '@nestjs/typeorm'
  import { ProjectsModule } from './projects/projects.module'
+import { AuthModule } from './auth/auth.module';
 
 
  @Module({ 
@@ -17,6 +18,7 @@
          TypeOrmModule.forRoot({...DataSourceConfig}),
          UsersModule,
          ProjectsModule,
+         AuthModule,
          
      ],
      controllers: [AppController],

@@ -84,3 +84,38 @@ https://www.youtube.com/watch?v=7uX7c-9iObM
 Relaciones con Query Builder | Clase 6 | NestJS de 0 a 100
 https://www.youtube.com/watch?v=pXYAwYq9gfw
 
+
+
+===================================================================================================
+===================================================================================================
+https://www.youtube.com/watch?v=NBR2AoHfKSo
+Autenticación de usuarios + Tip de TypeScript | Clase 7 | NestJS de 0 a 100
+
+1. Creación de una carpeta llamad index.d.ts types y dentro de ella un archivo llavado index.d.ts La "d" es de declaraciones
+Con esto es posible que TypeScript muestre ayuda al escribir  process.env. 
+
+2. instalación de paquetes para encriptar la contraseña:
+npm i bcrypt
+npm i jsonwebtoken
+npm i --save-dev @types/bcrypt
+
+Se procede a realizar la encriptación de la contraseña en el método createUser
+
+3. Instalación de class transformer: npm i class-transformer
+Esto permite colocar en la entidad un decorador  @Exclude(), para evitar que uno o mas campos se muesteb en la consulta, por ejemplo el password
+Se requiere para esto hacer una configuración en el archivo main
+
+4. Generar un modulo auth:  nest generate module auth
+
+5. Generar un servivio: nest generate service auth/services/auth
+
+6. Generar un controlador: nest generate controller auth/controllers/auth --flat
+
+7. Colocar la etiquet @Global() en el módulo
+
+8. Instalación: npm i --save-dev @types/jsonwebtoken
+23:00
+
+
+---------------------------------------------------------------------------------------------------
+
